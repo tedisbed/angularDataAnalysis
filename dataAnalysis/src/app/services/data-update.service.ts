@@ -28,12 +28,11 @@ export class DataUpdateService {
   constructor(public http: HttpClient) { }
 
   getTodaysGames(date: string): Promise<CurrentGame[]> {
-    const currentGames = this.http.get<ApiResponse<CurrentGame[]>>(
-      `${environment.apiEndpoint}${environment.games.endpoint}`, { headers: {date: "'2019-05-21'"} })
+    const endpoint = `${environment.apiEndpoint}${environment.games.endpoint}?date='${date}'`;
+    console.log(endpoint);
+    return this.http.get<ApiResponse<CurrentGame[]>>(endpoint)
       .toPromise()
-      .then(res => res.data);
-
-    return currentGames;
+      .then(res => { console.log(res.data); return res.data });
   }
 
   other() {

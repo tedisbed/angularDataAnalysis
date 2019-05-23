@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataUpdateService } from './services/data-update.service';
+import { CurrentGame } from './models/current-game.module';
 
 @Component({
   selector: 'app-root',
@@ -7,15 +8,22 @@ import { DataUpdateService } from './services/data-update.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit{
-  title = 'dataAnalysis';
+  title = 'My Huge Cock';
+  displayedColumns: string[] = ['Home', 'Home Starter', 'Away', 'Away Starter', 'Home Line',
+   'Away Line', 'Prediction'];
 
   constructor(public dataUpdateService: DataUpdateService) {}
 
+  allGames: CurrentGame[];
+
   ngOnInit() {
-    const allgames = this.dataUpdateService.getTodaysGames('2019-05-21');
-    // const allgames = this.dataUpdateService.other();
-    console.log(allgames);
+    const today = new Date();
+    const dd = String(today.getDate()).padStart(2, '0');
+    const mm = String(today.getMonth() + 1).padStart(2, '0');
+    const yyyy = today.getFullYear();
+
+    this.dataUpdateService.getTodaysGames(mm + '/' + dd + '/' + yyyy)
+    .then(a => this.allGames = a);
+    console.log(this.allGames);
   }
 }
-
-// http://165.227.107.6:5000/games?date='2019-05-21'
