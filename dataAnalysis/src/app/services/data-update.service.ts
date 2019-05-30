@@ -9,22 +9,6 @@ import { ApiResponse } from '../models/api-response.module';
 })
 export class DataUpdateService {
 
-  mockData: any = [{
-    "date": "2019-05-21",
-    "home": "Cleveland Indians",
-    "away": "Oakland Athletics",
-    "home_line": null,
-    "away_line": null,
-    "prediction": "Oakland Athletics"
-  }, {
-    "date": "2019-05-21",
-    "home": "Milwaukee Brewers",
-    "away": "Cincinnati Reds",
-    "home_line": null,
-    "away_line": null,
-    "prediction": "Milwaukee Brewers"
-  }];
-
   constructor(public http: HttpClient) { }
 
   getTodaysGames(date: string): Promise<CurrentGame[]> {
@@ -32,11 +16,6 @@ export class DataUpdateService {
     console.log(endpoint);
     return this.http.get<ApiResponse<CurrentGame[]>>(endpoint)
       .toPromise()
-      .then(res => { console.log(res.data); return res.data });
-  }
-
-  other() {
-    return this.mockData;
+      .then(res => res.data );
   }
 }
-

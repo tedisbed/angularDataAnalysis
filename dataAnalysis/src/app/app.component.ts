@@ -7,8 +7,9 @@ import { CurrentGame } from './models/current-game.module';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit{
-  title = 'My Huge Cock';
+export class AppComponent implements OnInit {
+  title = 'Baseball Betting';
+  linesNeeded = false;
   displayedColumns: string[] = ['Home', 'Home Starter', 'Away', 'Away Starter', 'Home Line',
    'Away Line', 'Prediction'];
 
@@ -23,7 +24,16 @@ export class AppComponent implements OnInit{
     const yyyy = today.getFullYear();
 
     this.dataUpdateService.getTodaysGames(mm + '/' + dd + '/' + yyyy)
-    .then(a => this.allGames = a);
+    .then(a => {
+      this.allGames = a;
+      if (this.allGames !== null && (this.allGames[0].away_line === null || this.allGames[0].home_line === null)) {
+        this.linesNeeded = true;
+      }
+    });
+  }
+
+  OnClick() {
     console.log(this.allGames);
+    this.linesNeeded = false;
   }
 }

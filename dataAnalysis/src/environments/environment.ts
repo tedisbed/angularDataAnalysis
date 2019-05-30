@@ -8,66 +8,6 @@ const env = {
   },
   games: {
     endpoint: '/games'
-  },
-  portfolio: {
-    endpoint: '/Portfolio'
-  },
-  qPRInclusion: {
-    endpoint: '/PortfolioQPRInclusion'
-  },
-  portfolioBenchmark: {
-    endpoint: '/PortfolioBenchmark'
-  },
-  portfolioGroup: {
-    endpoint: '/PortfolioGroup'
-  },
-  portfolioGroupType: {
-    endpoint: '/PortfolioGroupType'
-  },
-  portfolioGroupMembership: {
-    endpoint: '/PortfolioGroupMembership'
-  },
-  relationship: {
-    endpoint: '/Relationship'
-  },
-  lookup: {
-    endpoint: '/Lookup'
-  },
-  fielddata: {
-    endpoint: '/FieldData'
-  },
-  fieldnote: {
-    endpoint: '/FieldNote'
-  },
-  fundRegistrant: {
-    endpoint: '/FundRegistrant'
-  },
-  fundRegulatory: {
-    endpoint: '/FundRegulatory'
-  },
-  fundClass: {
-    endpoint: '/FundClass'
-  },
-  portfolioManager: {
-    endpoint: '/PortfolioManager'
-  },
-  employeeLookup: {
-    endpoint: '/EmployeeLookup'
-  },
-  parent: {
-    endpoint: '/Parent'
-  },
-  pmTeam: {
-    endpoint: '/PmTeam'
-  },
-  pmTeamEmployee: {
-    endpoint: '/PmTeamEmployee'
-  },
-  qprPm: {
-    endpoint: '/QprPm'
-  },
-  lookupParentChild: {
-    endpoint: '/LookupParentChild'
   }
 };
 
