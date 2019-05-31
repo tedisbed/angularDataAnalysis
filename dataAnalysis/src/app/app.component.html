@@ -5,10 +5,12 @@
 </div>
 
 <mat-form-field>
-    <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+    <input matInput [matDatepicker]="picker" placeholder="Choose a date" (dateChange)="addEvent($event)">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
+    <mat-datepicker #picker ></mat-datepicker>
 </mat-form-field>
+
+<button (click)=OnEdit() mat-raised-button color="warn">Edit</button>
 
 <table mat-table [dataSource]="allGames" class="mat-elevation-z8" color="primary">
 
@@ -44,7 +46,7 @@
         <form>
           <mat-form-field>
             <mat-label>Home Line</mat-label>
-            <input matInput #first [(ngModel)]="element.home_line" name="homeLine">
+            <input matInput #first type="number" [(ngModel)]="element.home_line" name="homeLine">
           </mat-form-field>
         </form> 
       </div>
@@ -61,7 +63,7 @@
         <form>
           <mat-form-field>
             <mat-label>Away Line</mat-label>
-            <input matInput #first [(ngModel)]="element.away_line" name="awayLine">
+            <input matInput #first type="number" [(ngModel)]="element.away_line" name="awayLine">
           </mat-form-field>
         </form>
       </div>

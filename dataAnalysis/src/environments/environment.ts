@@ -8,6 +8,9 @@ const env = {
   },
   games: {
     endpoint: '/games'
+  },
+  odds: {
+    endpoint: '/odds'
   }
 };
 

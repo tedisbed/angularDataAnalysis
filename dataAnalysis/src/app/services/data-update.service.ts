@@ -13,9 +13,15 @@ export class DataUpdateService {
 
   getTodaysGames(date: string): Promise<CurrentGame[]> {
     const endpoint = `${environment.apiEndpoint}${environment.games.endpoint}?date='${date}'`;
-    console.log(endpoint);
     return this.http.get<ApiResponse<CurrentGame[]>>(endpoint)
       .toPromise()
       .then(res => res.data );
+  }
+
+  updateOdds(obj: CurrentGame): Promise<CurrentGame> {
+    const endpoint = `${environment.apiEndpoint}${environment.odds.endpoint}`;
+    return this.http.patch<ApiResponse<CurrentGame>>(endpoint, obj)
+    .toPromise()
+    .then(res => res.data);
   }
 }
