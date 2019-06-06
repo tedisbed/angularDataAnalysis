@@ -11,6 +11,7 @@ import { MatDatepickerInputEvent } from '@angular/material';
 export class AppComponent implements OnInit {
   title = 'Baseball Betting';
   linesNeeded = false;
+  todayDate: string;
   displayedColumns: string[] = ['Home', 'Home Starter', 'Away', 'Away Starter', 'Home Line',
    'Away Line', 'Prediction'];
 
@@ -24,8 +25,8 @@ export class AppComponent implements OnInit {
     const mm = String(today.getMonth() + 1).padStart(2, '0');
     const yyyy = today.getFullYear();
 
-    console.log(mm + '/' + dd + '/' + yyyy);
-    this.dataUpdateService.getTodaysGames(mm + '/' + dd + '/' + yyyy)
+    this.todayDate = mm + '/' + dd + '/' + yyyy;
+    this.dataUpdateService.getTodaysGames(this.todayDate)
     .then(a => {
       this.allGames = a;
       this.allGames.forEach(game => {
@@ -45,13 +46,12 @@ export class AppComponent implements OnInit {
     console.log(mm + '/' + dd + '/' + yyyy);
     this.dataUpdateService.getTodaysGames(mm + '/' + dd + '/' + yyyy)
     .then(a => this.allGames = a);
+    console.log(this.allGames);
   }
 
   OnClick(event) {
     this.allGames.forEach( game => {
-      this.dataUpdateService.updateOdds(game);
-      console.log(game);
-      console.log(event);
+        this.dataUpdateService.updateOdds(game);
     });
   }
 

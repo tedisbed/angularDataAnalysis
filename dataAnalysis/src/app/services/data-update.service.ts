@@ -11,16 +11,16 @@ export class DataUpdateService {
 
   constructor(public http: HttpClient) { }
 
-  getTodaysGames(date: string): Promise<CurrentGame[]> {
+  async getTodaysGames(date: string): Promise<CurrentGame[]> {
     const endpoint = `${environment.apiEndpoint}${environment.games.endpoint}?date='${date}'`;
     return this.http.get<ApiResponse<CurrentGame[]>>(endpoint)
       .toPromise()
       .then(res => res.data );
   }
 
-  updateOdds(obj: CurrentGame): Promise<CurrentGame> {
+  async updateOdds(obj: CurrentGame): Promise<CurrentGame> {
     const endpoint = `${environment.apiEndpoint}${environment.odds.endpoint}`;
-    return this.http.patch<ApiResponse<CurrentGame>>(endpoint, obj)
+    return this.http.post<ApiResponse<CurrentGame>>(endpoint, obj)
     .toPromise()
     .then(res => res.data);
   }
