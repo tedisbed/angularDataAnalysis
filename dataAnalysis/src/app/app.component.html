@@ -48,6 +48,7 @@
             <mat-form-field>
               <mat-label>Home Line</mat-label>
               <input matInput #first type="number" [(ngModel)]="element.home_line" name="homeLine">
+              <mat-hint align="end">{{element.home}}</mat-hint>
             </mat-form-field>
           </form> 
         </div>
@@ -65,6 +66,7 @@
             <mat-form-field>
               <mat-label>Away Line</mat-label>
               <input matInput #first type="number" [(ngModel)]="element.away_line" name="awayLine">
+              <mat-hint align="end">{{element.away}}</mat-hint>
             </mat-form-field>
           </form>
         </div>
